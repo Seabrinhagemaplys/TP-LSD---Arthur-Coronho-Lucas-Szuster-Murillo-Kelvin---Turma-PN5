@@ -1,8 +1,4 @@
-**NÃO É O REPOSITÓRIO FINAL DO PROJETO**
-
 Integrantes do grupo: Arthur Coronho Seabra Eiras, Lucas Araújo Campos Szuster e Murillo Kelvin de Andrade Santos
-
-Link do Github: [Link do github](https://github.com/Seabrinhagemaplys/TP-LSD---Arthur-Coronho-Lucas-Szuster-Murillo-Kelvin---Turma-PN5/tree/main)
 
 ## Projeto final da discplina de Laboratório de Sistemas Digitais
 
@@ -40,3 +36,16 @@ virar à direita desde que não existam pedestres atravessando nem na sua via ne
 via cruzada. Como um pedestre só atravessa se tiver pressionado o botão de pedestre
 correspondente, utiliza-se a entrada outro_pedestre para verificar se há travessia ativa
 
+## FSM de alto nível -RTL fase 1
+
+<img title="a title" alt="Alt text" src="/imagens/graphviz_2.png">
+
+## Datapath - RTL fase 2
+
+<img title="a title" alt="Alt text" src="/imagens/vvvvvv_page-0001_1.jpg">
+
+## Integração Caminho de dados e Controladora - RTL fase 3
+<img title="a title" alt="Alt text" src="/imagens/RLLT3_page-0001_1.jpg">
+
+## FSM de baixo nível - RTL fase 4
+<img title="a title" alt="Alt text" src="/imagens/graphviz_1.png">
