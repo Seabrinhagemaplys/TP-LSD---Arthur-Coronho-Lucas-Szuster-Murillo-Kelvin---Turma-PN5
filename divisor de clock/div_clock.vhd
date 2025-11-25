@@ -1,44 +1,37 @@
--- Arthur Coronho, Lucas Szuster, Murillo Kelvin - Turma PN5
+-- Arthur Coronho Seabra Eiras, Lucas Araújo Campos Szuster, Murillo Kelvin
+-- Código do professor Marconi
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity criador_de_clock is
-  generic (
-    -- quantidade de contagem
-    N : integer := 27000000
-  );
-  port (
-    -- entradas
-    SW : in std_logic_vector(0 downto 0);
-    CLOCK_27 : in std_logic;
-    
-    -- saídas
-    LEDR : out std_logic_vector(0 downto 0)
-  );
-end entity criador_de_clock;
 
-architecture cnt of criador_de_clock is
+entity divisor_clock is
+	port (
+		CLOCK_27MHz : in std_logic;
+		reset : in std_logic;
+		CLOCK_1Hz : out std_logic
+	);
 
-    signal contador : integer range 0 to N := 0;
+end entity;
+
+architecture rtl of divisor_clock is
 
 begin
-
-    process(CLOCK_27, SW(0))
-    begin
-        if (SW(0) = '1') then
-            -- clear_contador ligado, a saída vai para 0
-            LEDR(0) <= '1';
-            contador <= 0;
-
-        elsif rising_edge(CLOCK_27) then
-            if (contador = N) then
-                LEDR(0) <= '0';
-                contador <= 0;
-            else
-                contador <= contador + 1;
-                LEDR(0) <= '1';
-            end if;
-        end if;
-    end process;
-
-end architecture cnt;
+	process (CLOCK_27MHz,reset)
+		variable cnt : integer range 0 to 13500000;
+		variable clk : std_logic:='0';
+	begin
+		if (reset = '1') then
+			cnt := 0;
+		elsif (rising_edge(CLOCK_27MHz)) then
+			if (cnt = 13500000) then
+				clk := not clk;
+				cnt := 0;
+			else
+				cnt := cnt + 1;
+			end if;
+		end if;
+		
+		-- atribuição da saida
+		CLOCK_1Hz <= clk;
+	end process;
+end architecture;
