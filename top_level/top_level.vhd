@@ -33,7 +33,7 @@ begin
     clk_manual <= not KEY(0);  -- botão como clock
 
     -- Instância da CONTROLADORA (FSM)
-    U0: entity work.controladora
+    C: entity work.controladora
         port map(
             pedestre         => SW(0),   -- pedestre usa SW(0)
             outro_pedestre   => SW(1),   -- outro pedestre SW(1)
@@ -53,7 +53,7 @@ begin
             vetor_proximo_estado => vetor_proximo_estado
         );
       
-    -- LEDs (controle simples para visualizar estados)
+    -- LEDs 
     LEDR(0) <= sinal_verde;
     LEDR(1) <= sinal_amarelo;
     LEDR(2) <= sinal_vermelho;
